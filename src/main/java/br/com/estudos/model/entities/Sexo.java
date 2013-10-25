@@ -1,12 +1,17 @@
 package br.com.estudos.model.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.ForeignKey;
 
 @Entity
 @Table (name="TbSexo")
@@ -21,22 +26,36 @@ public class Sexo implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer idSexo;
-	@Column (length=10, nullable=false)
-	private String  sexo;
+	@Column (length=9, nullable=false, unique=true)
+	private String  descricao;
+	@OneToMany(mappedBy="TbSexo", fetch=FetchType.LAZY)
+	@ForeignKey(name="pessoaSexoFK")
+	private List<Pessoa> pessoas;
 	
 	public Integer getIdSexo() {
 		return idSexo;
 	}
+
 	public void setIdSexo(Integer idSexo) {
 		this.idSexo = idSexo;
 	}
-	public String getSexo() {
-		return sexo;
+
+	public String getDescricao() {
+		return descricao;
 	}
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
-	
+
+	public List<Pessoa> getPessoas() {
+		return pessoas;
+	}
+
+	public void setPessoas(List<Pessoa> pessoas) {
+		this.pessoas = pessoas;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
