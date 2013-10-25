@@ -5,9 +5,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,10 +22,7 @@ import org.hibernate.annotations.ForeignKey;
 public class Pessoa implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	public Pessoa() {
-		super();
-	}
-	
+
 	@Id
 	@GeneratedValue
 	private Integer idPessoa;
@@ -40,9 +40,19 @@ public class Pessoa implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date   dtCadastro;
 	
+	@OneToOne(mappedBy="TbPessoa", fetch=FetchType.LAZY)
+	@ForeignKey(name="endPessoaFK")
+	private Endereco endereco;
+	
 	@ManyToOne(optional=false)
 	@ForeignKey(name="pessoaSexoFK")
-	private Pessoa pessoa;
+	@JoinColumn(name="idSexo", referencedColumnName="idSexo")
+	private Sexo sexo;
+	
+	public Pessoa(){
+		this.endereco = new Endereco();
+		this.sexo 	  = new Sexo();
+	}
 	
 	public Integer getIdPessoa() {
 		return idPessoa;
@@ -86,13 +96,21 @@ public class Pessoa implements Serializable{
 	public void setDtCadastro(Date dtCadastro) {
 		this.dtCadastro = dtCadastro;
 	}
+
+	public Sexo getSexo() {
+		return sexo;
+	}
+	public void setSexo(Sexo sexo) {
+		this.sexo = sexo;
+	}
 	
-	public Pessoa getPessoa() {
-		return pessoa;
+	public Endereco getEndereco() {
+		return endereco;
 	}
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

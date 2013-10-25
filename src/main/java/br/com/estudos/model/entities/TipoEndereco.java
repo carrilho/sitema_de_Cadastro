@@ -1,12 +1,17 @@
 package br.com.estudos.model.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.ForeignKey;
 
 @Entity
 @Table (name="TbTipoEndereco")
@@ -24,6 +29,10 @@ public class TipoEndereco implements Serializable {
 	@Column (length=20, nullable=false)
 	private String  nomeTpEnd;
 	
+	@OneToMany(mappedBy="TbTipoEndereco", fetch=FetchType.LAZY)
+	@ForeignKey(name="endTipoEnderecoPK")
+	private List<Endereco> enderecos;
+	
 	public Integer getIdTpEndereco() {
 		return idTpEndereco;
 	}
@@ -37,6 +46,12 @@ public class TipoEndereco implements Serializable {
 		this.nomeTpEnd = nomeTpEnd;
 	}
 	
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

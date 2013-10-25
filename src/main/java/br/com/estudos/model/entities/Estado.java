@@ -1,12 +1,17 @@
 package br.com.estudos.model.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.ForeignKey;
 
 @Entity
 @Table (name="TbEstado")
@@ -23,9 +28,11 @@ public class Estado implements Serializable{
 	private Integer idEstado;
 	@Column (length=20, nullable=false)
 	private String nomeEstado;
-	@Column (length=2, nullable=false)
-	private String sigla;
 	
+	@OneToMany(mappedBy="TbEstado", fetch=FetchType.LAZY)
+	@ForeignKey (name="endEstadoFK")
+	private List<Endereco> enderecos;
+			
 	public Integer getIdEstado() {
 		return idEstado;
 	}
@@ -38,13 +45,13 @@ public class Estado implements Serializable{
 	public void setNomeEstado(String nomeEstado) {
 		this.nomeEstado = nomeEstado;
 	}
-	public String getSigla() {
-		return sigla;
-	}
-	public void setSigla(String sigla) {
-		this.sigla = sigla;
-	}
 	
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
