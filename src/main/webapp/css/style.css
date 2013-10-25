@@ -1,0 +1,41 @@
+.ui-widget {
+	font-size: 12px !important;
+}
+
+#header {
+	background-image: url("../images/banner.jpg");
+	background-repeat: no-repeat;
+	height: 150px;
+	-moz-border-radius: 15px; /* Para Firefox */
+	-webkit-border-radius: 15px; /*Para Safari e Chrome */
+	border-radius: 15px; /* Para Opera 10.5+*/
+}
+
+#menu {
+	margin-top: 5px;
+	margin-bottom: 2px;
+}
+
+#footer {
+	text-align: center;
+	margin-top: 5px;
+}
+
+#login {
+	margin-left: 500px;
+	margin-top: 115px;
+	margin-bottom: 115px;
+}
+
+#loginButton {
+	margin-left: 140px;
+}
+
+#tabView {
+	width: 700px;
+	margin-left: 300px;
+}
+
+#botao {
+	margin-left: 200px;
+}

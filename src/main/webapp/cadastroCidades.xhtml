@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<ui:composition template="template/template.xhtml"
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="content">
+		<p:panel header="Cadastrar Pessoa:">
+			
+			<h:panelGrid columns="3" style="margin-left: 450px;margin-top:20px;margin-bottom: 280px;">
+				<h:outputLabel for="nomeCidade" value="Cidade:" />
+				<p:inputText value="" />
+				<p:commandButton value="Cadastrar" ></p:commandButton>
+			</h:panelGrid>
+		</p:panel>
+	</ui:define>
+
+</ui:composition>

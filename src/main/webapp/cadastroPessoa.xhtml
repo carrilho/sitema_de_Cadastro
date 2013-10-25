@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<ui:composition template="template/template.xhtml"
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="content">
+		<p:panel header="Cadastrar Pessoa:">
+			
+			<p:tabView id="tabView" >
+				 <p:tab id="tab1" title="Informações básicas.">  
+					<h:panelGrid columns="2" cellpadding="5">
+						<h:outputLabel for="nome" value="Nome:"></h:outputLabel>
+						<p:inputText value="" id="nome" size="30"/>
+						
+						<h:outputLabel for="sexo" value="Sexo:"></h:outputLabel>
+						<p:selectOneMenu id="sexo">
+						   	 <f:selectItem itemLabel="..." />
+							 <f:selectItem itemLabel="Masculino" itemValue="M" />  
+		                	 <f:selectItem itemLabel="Feminino" itemValue="F" />
+						</p:selectOneMenu>
+						
+						<h:outputLabel for="telefone" value="Telefone:"></h:outputLabel>
+						<p:inputText value="" id="telefone" />
+						
+						<h:outputLabel for="email" value="Email:"></h:outputLabel>
+						<p:inputText value="" id="email" size="30"/>
+						
+						<h:outputLabel for="cpf" value="CPF:"></h:outputLabel>
+						<p:inputText value="" id="cpf" />
+						
+						<h:outputLabel for="dtNasc" value="Data de Nascimento:"></h:outputLabel>
+						<p:inputText value="" id="dtNasc"></p:inputText>
+						
+						<h:outputLabel for="user" value="Usuário:"></h:outputLabel>
+						<p:inputText value="" id="user" />
+						
+						<h:outputLabel for="senha" value="Senha:"></h:outputLabel>
+						<p:inputText value="" id="senha" />
+						
+						<h:outputLabel for="confSenha" value="Confirmar Senha:"></h:outputLabel>
+						<p:inputText value="" id="confSenha" />
+						
+				</h:panelGrid>
+				<p:commandButton value="Próxima aba" style="margin-left: 520px;"></p:commandButton>
+				</p:tab>
+				
+				 <p:tab id="tab2" title="Informações do endereço." disabled="true"> 
+				 	<h:panelGrid columns="2" cellpadding="5">
+					 	<h:outputLabel for="estado" value="Estado:"></h:outputLabel>
+							<p:selectOneMenu id="estado">
+							   	 <f:selectItem itemLabel="..." />
+								 <f:selectItem itemLabel="SP" itemValue="M" />  
+			                	 <f:selectItem itemLabel="RJ" itemValue="F" />
+							</p:selectOneMenu>
+							
+							<h:outputLabel for="cidade" value="Cidade:"></h:outputLabel>
+							<p:selectOneMenu id="cidade">
+							   	 <f:selectItem itemLabel="..." />
+								 <f:selectItem itemLabel="Santo André" itemValue="M" />  
+			                	 <f:selectItem itemLabel="Mauá" itemValue="F" />
+							</p:selectOneMenu>
+							
+							<h:outputLabel for="bairro" value="Bairro:"></h:outputLabel>
+							<p:inputText value="" id="bairro" size="30"/>
+							
+							<h:outputLabel for="tpEnd" value="Tipo de Endereço:"></h:outputLabel>
+							<p:selectOneMenu id="tpEnd">
+							   	 <f:selectItem itemLabel="..." />
+								 <f:selectItem itemLabel="Residencial" itemValue="M" />  
+			                	 <f:selectItem itemLabel="Comercial" itemValue="F" />
+							</p:selectOneMenu>
+							
+							<h:outputLabel for="rua" value="Rua:"></h:outputLabel>
+							<p:inputText value="" id="rua" size="30"/>
+							
+							<h:outputLabel for="cep" value="CEP:"></h:outputLabel>
+							<p:inputText value="" id="cep" />
+							
+							<h:outputLabel for="numero" value="Número:"></h:outputLabel>
+							<p:inputText value="" id="numero" />
+							
+							<h:outputLabel for="complemento" value="Complemento:"></h:outputLabel>
+							<p:inputText value="" id="complemento" />
+						</h:panelGrid>
+				 </p:tab>
+			</p:tabView>
+		</p:panel>
+	</ui:define>
+
+</ui:composition>

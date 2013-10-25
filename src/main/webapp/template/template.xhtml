@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link href="#{facesContext.externalContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Sistema de Cadastro!</title>
+</h:head>
+
+<body>
+	
+	<h:form prependId="false">
+		
+		<ui:insert name="header" >
+		<div id="header"></div>
+			<ui:include src="../header.xhtml"></ui:include>
+		</ui:insert>
+		
+		<div id="content">
+			<ui:insert name="content"></ui:insert>
+		</div>
+		
+		<div id="footer">
+			<ui:insert name="footer">
+				<ui:include src="../footer.xhtml"></ui:include>
+			</ui:insert>
+		</div>
+	</h:form>
+	
+</body>
+</html>
