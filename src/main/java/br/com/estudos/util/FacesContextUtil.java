@@ -8,12 +8,12 @@ public class FacesContextUtil {
 	
 	private static final String HIBERNATE_SESSION = "hibernate_session";
 	
-	//método que seta a sessão na requisição do usuário
+	//metodo que seta a sessao na requisicao do usuario
 	public static void setRequestSession(Session session){
 		FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put(HIBERNATE_SESSION, session);
 	}
 	
-	//método para recuperar a sessão
+	//metodo para recuperar a sessao
 	public static Session getRequestSession() {
 		return (Session) FacesContext.getCurrentInstance().getExternalContext().getRequestMap().get(HIBERNATE_SESSION);
 	}
