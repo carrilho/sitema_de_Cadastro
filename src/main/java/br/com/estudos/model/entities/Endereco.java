@@ -4,12 +4,10 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ForeignKey;
@@ -34,31 +32,13 @@ public class Endereco implements Serializable{
 	@Column (length=5)
 	private int numero;
 	
-	@OneToOne(mappedBy="TbEndereco", fetch=FetchType.LAZY)
-	@ForeignKey(name="endPessoaFK")
-	@JoinColumn(name="idPessoa", referencedColumnName="idPessoa")
-	private Pessoa pessoa;
-	
 	@ManyToOne
 	@ForeignKey(name="endCidadeFK")
 	@JoinColumn(name="idCidade",referencedColumnName="idCidade")
 	private Cidade cidade;
-	
-	@ManyToOne
-	@ForeignKey(name="endEstadoFK")
-	@JoinColumn(name="idEstado", referencedColumnName="idEstado")
-	private Estado estado;
-	
-	@ManyToOne
-	@ForeignKey(name="endTipoEnderecoPK")
-	@JoinColumn(name="idTpEndereco", referencedColumnName="idTpEndereco")
-	private TipoEndereco tipoEndereco;
 
 	public Endereco() {
 		this.cidade		  =  new Cidade();
-		this.estado		  =  new Estado();
-		this.tipoEndereco =  new TipoEndereco();
-		this.pessoa 	  =  new Pessoa();
 	}
 	
 	public Integer getIdEndereco() {
@@ -104,26 +84,7 @@ public class Endereco implements Serializable{
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
 	}
-	public Estado getEstado() {
-		return estado;
-	}
-	public void setEstado(Estado estado) {
-		this.estado = estado;
-	}
-	public TipoEndereco getTipoEndereco() {
-		return tipoEndereco;
-	}
-	public void setTipoEndereco(TipoEndereco tipoEndereco) {
-		this.tipoEndereco = tipoEndereco;
-	}
-	
-	public Pessoa getPessoa() {
-		return pessoa;
-	}
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
-	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

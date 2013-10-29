@@ -9,18 +9,47 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="content">
+	<h:form id="formCidade">	
+	<p:panel header="Cidades">
 		
-	<p:panel header="Lista de Pessoas:">
-			<p:dataTable value="" paginator="true">
+		<p:growl id="msgCidade"/>
+			<p:tabView id="tabViewCidade" >
+				<p:tab title="Cadastrar Cidade">
+					
+					<h:panelGrid columns="4" id="panelCidade">
+						<h:outputLabel for="nomeCidade" value="Cidade:" />
+						<p:inputText id="nomeCidade" size="40" value="#{cidadeMB.cidade.nomeCidade}" onkeyup="this.value = this.value.toUpperCase()"
+						required="true" requiredMessage="O campo [Nome] é obrigatório!"/>
+						<p:commandButton value="Cadastrar" id="btnCadastrar" action="#{cidadeMB.addCidade}" update=":formTemplate:formCidade:tableCidade :formTemplate:formCidade:msgCidade nomeCidade"></p:commandButton>
+						<p:commandButton value="Cancelar" actionListener="#{cidadeMB.limpaCidade}" update="nomeCidade"></p:commandButton>
+					</h:panelGrid>
+				</p:tab>
+			</p:tabView>
+			<br></br><br></br>
+			
+			<p:dataTable id="tableCidade" value="#{cidadeMB.cidades}" paginator="true" 
+			rows="5" var="cidade" editable="true" editMode="cell" emptyMessage="Nenhuma cidade cadastrada!">
 				
+				 <p:ajax event="cellEdit" listenesr="#{cidadeMB.editarCidade}" update=":formTemplate:formCidade:msgCidade"/>
+				 <h:inputHidden id="hiddenId" value="#{cidade.idCidade}"></h:inputHidden>
+				 
 				<p:column headerText="Nome">
-					<f:facet name="Nome"></f:facet>
+					<p:cellEditor>  
+	                   <f:facet name="output"><h:outputText value="#{cidade.nomeCidade}" /></f:facet>  
+	                   <f:facet name="input"><p:inputText value="#{cidade.nomeCidade}" style="width:96%" onkeyup="this.value = this.value.toUpperCase();"/></f:facet>  
+	               </p:cellEditor>  
 				</p:column>
 				
-				<p:column headerText="Alterar/Deletar"></p:column>
+				<p:column headerText="Deletar" style="width:25px;">
+					<p:commandButton immediate="true" value="Excluir" action="#{cidadeMB.removeCidade}" update=":formTemplate:formCidade:tableCidade :formTemplate:formCidade:msgCidade">
+						<f:setPropertyActionListener target="#{cidadeMB.cidade}" value="#{cidade}"></f:setPropertyActionListener>
+					</p:commandButton>
+				</p:column>
 			
 			</p:dataTable>
 		</p:panel>
+		</h:form>
+		
 	</ui:define>
 
 </ui:composition>

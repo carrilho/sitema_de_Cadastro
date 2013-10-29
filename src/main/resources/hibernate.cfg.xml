@@ -13,5 +13,7 @@
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<property name="show_sql">true</property>
 		
+		<mapping class="br.com.estudos.model.entities.Cidade"/>
+		<mapping class="br.com.estudos.model.entities.Endereco"/>
 	</session-factory>
 </hibernate-configuration>

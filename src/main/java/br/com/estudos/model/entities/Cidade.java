@@ -20,7 +20,7 @@ public class Cidade implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	public Cidade(){
-		super();
+		
 	}
 	
 	@Id
@@ -29,29 +29,27 @@ public class Cidade implements Serializable{
 	@Column (length=80, nullable=false)
 	private String nomeCidade;
 	
-	@OneToMany(mappedBy="TbCidade", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="cidade", fetch=FetchType.EAGER)
 	@ForeignKey (name="endCidadeFK")
 	private List<Endereco> enderecos;
+	
 	
 	public Integer getIdCidade() {
 		return idCidade;
 	}
+
 	public void setIdCidade(Integer idCidade) {
 		this.idCidade = idCidade;
 	}
+
 	public String getNomeCidade() {
 		return nomeCidade;
 	}
+
 	public void setNomeCidade(String nomeCidade) {
 		this.nomeCidade = nomeCidade;
 	}
-	
-	public List<Endereco> getEnderecos() {
-		return enderecos;
-	}
-	public void setEnderecos(List<Endereco> enderecos) {
-		this.enderecos = enderecos;
-	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -13,8 +13,8 @@ public class PhaseListenerCadastro implements PhaseListener{
 	@Override
 	public void afterPhase(PhaseEvent phase) {
 		if(phase.getPhaseId().equals(PhaseId.RESTORE_VIEW)){
-			System.out.println("Antes da fase" + getPhaseId());
-			Session session = HibernateUtil.getSessionFactory().openSession();
+			System.out.println("Antes da fase" + phase.getPhaseId());
+			Session session = HibernateUtil.buildSession().openSession();
 			session.beginTransaction();
 			FacesContextUtil.setRequestSession(session);
 
@@ -24,7 +24,7 @@ public class PhaseListenerCadastro implements PhaseListener{
 	@Override
 	public void beforePhase(PhaseEvent phase) {
 		if(phase.getPhaseId().equals(PhaseId.RENDER_RESPONSE)){
-			System.out.println("Depois da fase" + getPhaseId());
+			System.out.println("Depois da fase" + phase.getPhaseId());
 			Session session = FacesContextUtil.getRequestSession();
 			try {
 				session.getTransaction().commit();
@@ -32,8 +32,6 @@ public class PhaseListenerCadastro implements PhaseListener{
 				if(session.getTransaction().isActive()){
 					session.getTransaction().rollback();
 				}
-			}finally{
-				session.close();
 			}
 		}
 	}
