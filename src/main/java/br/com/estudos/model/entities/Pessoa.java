@@ -40,7 +40,7 @@ public class Pessoa implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date   dtCadastro;
 	
-	@OneToOne(mappedBy="TbPessoa", fetch=FetchType.LAZY)
+	@OneToOne(mappedBy="pessoa", fetch=FetchType.LAZY)
 	@ForeignKey(name="endPessoaFK")
 	private Endereco endereco;
 	

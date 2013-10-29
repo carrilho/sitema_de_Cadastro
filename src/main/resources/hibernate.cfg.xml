@@ -13,6 +13,10 @@
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<property name="show_sql">true</property>
 		
+		<mapping class="br.com.estudos.model.entities.Pessoa"/>
+		<mapping class="br.com.estudos.model.entities.Sexo"/>
+		<mapping class="br.com.estudos.model.entities.Estado"/>
+		<mapping class="br.com.estudos.model.entities.TipoEndereco"/>
 		<mapping class="br.com.estudos.model.entities.Cidade"/>
 		<mapping class="br.com.estudos.model.entities.Endereco"/>
 	</session-factory>

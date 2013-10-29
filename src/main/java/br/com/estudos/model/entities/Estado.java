@@ -29,7 +29,7 @@ public class Estado implements Serializable{
 	@Column (length=20, nullable=false)
 	private String nomeEstado;
 	
-	@OneToMany(mappedBy="TbEstado", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="estado", fetch=FetchType.LAZY)
 	@ForeignKey (name="endEstadoFK")
 	private List<Endereco> enderecos;
 			

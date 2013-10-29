@@ -29,7 +29,7 @@ public class TipoEndereco implements Serializable {
 	@Column (length=20, nullable=false)
 	private String  nomeTpEnd;
 	
-	@OneToMany(mappedBy="TbTipoEndereco", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="tipoEndereco", fetch=FetchType.LAZY)
 	@ForeignKey(name="endTipoEnderecoPK")
 	private List<Endereco> enderecos;
 	

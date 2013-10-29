@@ -28,6 +28,10 @@ public class PessoaMB implements Serializable {
 				Pessoa.class, FacesContextUtil.getRequestSession());
 		return pessoaDAO;
 	}
+	
+	public PessoaMB(){
+
+	}
 
 	public void addPessoa() {
 		if (pessoa.getIdPessoa() == null || pessoa.getIdPessoa() == 0) {
@@ -63,12 +67,7 @@ public class PessoaMB implements Serializable {
 		}
 
 	}
-
-	public List<Pessoa> listaPessoas() {
-
-		return null;
-	}
-
+	
 	public Pessoa getPessoa() {
 		return pessoa;
 	}

@@ -28,7 +28,7 @@ public class Sexo implements Serializable{
 	private Integer idSexo;
 	@Column (length=9, nullable=false, unique=true)
 	private String  descricao;
-	@OneToMany(mappedBy="TbSexo", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="sexo", fetch=FetchType.LAZY)
 	@ForeignKey(name="pessoaSexoFK")
 	private List<Pessoa> pessoas;
 	
